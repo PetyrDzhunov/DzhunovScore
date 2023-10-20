@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import Image from 'next/image';
+import legendsImage from '../assets/hero-background.png';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,7 +18,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Image
+          style={{ zIndex: -1 }}
+          alt='legends-image'
+          src={legendsImage}
+          fill
+        ></Image>
+        {children}
+      </body>
     </html>
   );
 }
