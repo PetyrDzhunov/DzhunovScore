@@ -4,8 +4,4 @@ export enum ButtonVariantWithStyles {
   Danger,
 }
 
-export enum ButtonSize {
-  Small,
-  Medium,
-  Large,
-}
+export type ButtonSize = 'small' | 'medium' | 'large';

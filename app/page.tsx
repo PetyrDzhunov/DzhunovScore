@@ -13,8 +13,16 @@ export default function Home() {
         fill
       ></Image>
       <section className='flex'>
-        <Button text='Register' variant={ButtonVariantWithStyles.Primary} />
-        <Button text='Login' variant={ButtonVariantWithStyles.Secondary} />
+        <Button
+          text='Register'
+          buttonSize='medium'
+          variant={ButtonVariantWithStyles.Primary}
+        />
+        <Button
+          text='Login'
+          buttonSize='medium'
+          variant={ButtonVariantWithStyles.Secondary}
+        />
       </section>
     </main>
   );
