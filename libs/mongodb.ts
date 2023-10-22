@@ -1,10 +1,14 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose from 'mongoose';
 
-const userSchema = new Schema(
-  { username: String, email: String, password: String },
-  { timestamps: true },
-);
+const connectMongoDB = async () => {
+  try {
+    if (process.env.MONGODB_URI) {
+      await mongoose.connect(process.env.MONGODB_URI);
+      console.log('Connected to MongoDB');
+    }
+  } catch (error) {
+    console.log('Error while conncting to MongoDB: ' + error);
+  }
+};
 
-const User = mongoose.models.User || mongoose.model('User', userSchema);
-
-export default User;
+export default connectMongoDB;

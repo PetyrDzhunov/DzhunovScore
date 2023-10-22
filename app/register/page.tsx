@@ -6,6 +6,7 @@ import { UserSchema } from '@/types/user/user-types';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { UserType } from '@/types/user/user-validation';
+import axios from 'axios';
 type RegisterPageProps = {};
 
 const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
@@ -17,8 +18,13 @@ const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
     resolver: zodResolver(UserSchema),
   });
 
-  const onSubmitHandler: SubmitHandler<UserType> = (data: UserType) => {
-    const { username, email, password } = data;
+  const onSubmitHandler: SubmitHandler<UserType> = async (data: UserType) => {
+    const response = await axios.post('http://localhost:3000/api/users', data, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    // on creating reroute to future home page
   };
 
   return (
