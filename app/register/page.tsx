@@ -17,7 +17,9 @@ const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
     resolver: zodResolver(UserSchema),
   });
 
-  const onSubmitHandler: SubmitHandler<UserType> = (d) => {};
+  const onSubmitHandler: SubmitHandler<UserType> = (data: UserType) => {
+    const { username, email, password } = data;
+  };
 
   return (
     <div className='flex items-center justify-center bg-gray-100 rounded-md'>
