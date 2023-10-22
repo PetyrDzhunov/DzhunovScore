@@ -3,8 +3,9 @@ import Button from '@/components/Button/Button';
 import { z } from 'zod';
 import { ButtonVariantWithStyles } from '@/components/Button/types';
 import { UserSchema } from '@/types/user/user-types';
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { UserType } from '@/types/user/user-validation';
 type RegisterPageProps = {};
 
 const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
@@ -12,14 +13,16 @@ const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<UserType>({
     resolver: zodResolver(UserSchema),
   });
+
+  const onSubmitHandler: SubmitHandler<UserType> = (d) => {};
 
   return (
     <div className='flex items-center justify-center bg-gray-100 rounded-md'>
       <form
-        onSubmit={handleSubmit((d) => console.log(d))}
+        onSubmit={handleSubmit(onSubmitHandler)}
         className='bg-white p-8 rounded shadow-md max-w-md'
       >
         <div className='mb-4'>
