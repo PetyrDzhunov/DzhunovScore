@@ -7,14 +7,9 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { UserType } from '@/types/user/user-validation';
 import axios from 'axios';
-import useFetch from '../hooks/useFetch';
-import { ApiUrls } from '@/constants/constants';
-import { ApiPostResponse } from '@/types/generic-types';
-import toast from 'react-hot-toast';
-type RegisterPageProps = {};
+type LoginPageProps = {};
 
-const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
-  const { sendRequest, isLoading } = useFetch();
+const LoginPage: React.FC<LoginPageProps> = ({}) => {
   const {
     register,
     handleSubmit,
@@ -24,23 +19,12 @@ const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
   });
 
   const onSubmitHandler: SubmitHandler<UserType> = async (data: UserType) => {
-    const response: ApiPostResponse = await sendRequest(
-      ApiUrls.USERS,
-      'POST',
-      JSON.stringify(data),
-      {
-        'Content-Type': 'application/json',
-      },
-    );
-    if (response.status > 200 && response.status < 300) {
-      toast.success('Successfully created user', {
-        position: 'top-right',
-      });
-    } else {
-      toast.error(response.message, {
-        position: 'top-right',
-      });
-    }
+    // const response = await axios.post('http://localhost:3000/api/users', data, {
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    // });
+    console.log(data);
     // maybe save the user to some global local state
     // on creating reroute to future home page
   };
@@ -51,21 +35,6 @@ const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
         onSubmit={handleSubmit(onSubmitHandler)}
         className='bg-white p-8 rounded shadow-md max-w-md'
       >
-        <div className='mb-4'>
-          <label className='block text-gray-700 text-sm font-bold mb-2'>
-            Username:
-          </label>
-          <input
-            {...register('username')}
-            className='text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500'
-          />
-          {errors?.username?.message && (
-            <p className='text-red-500 text-sm mt-1 font-semibold'>
-              {errors?.username?.message as string}
-            </p>
-          )}
-        </div>
-
         <div className='mb-4'>
           <label className='block text-gray-700 text-sm font-bold mb-2'>
             Email:
@@ -100,7 +69,7 @@ const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
         <div className='mb-6'>
           <Button
             variant={ButtonVariantWithStyles.Primary}
-            text='Register'
+            text='Login'
             className='w-full'
           />
         </div>
@@ -109,4 +78,4 @@ const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
   );
 };
 
-export default RegisterPage;
+export default LoginPage;

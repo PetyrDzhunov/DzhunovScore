@@ -15,16 +15,16 @@ const LoginRegisterButtons: React.FC = () => {
   };
 
   return (
-    <section className="flex m-5">
+    <section className='flex m-5'>
       <Button
-        text="Register"
-        buttonSize="medium"
+        text='Register'
+        buttonSize='medium'
         variant={ButtonVariantWithStyles.Primary}
         onClick={onRegisterHandler}
       />
       <Button
-        text="Login"
-        buttonSize="medium"
+        text='Login'
+        buttonSize='medium'
         variant={ButtonVariantWithStyles.Secondary}
         onClick={onLoginHandler}
       />

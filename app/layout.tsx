@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Image from 'next/image';
 import legendsImage from '../assets/hero-background.png';
+import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
+        <Toaster />
         <Image
           style={{ zIndex: -1 }}
           alt='legends-image'
