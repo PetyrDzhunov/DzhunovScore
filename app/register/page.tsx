@@ -9,7 +9,7 @@ import { UserType } from '@/types/user/user-validation';
 import axios from 'axios';
 import useFetch from '../hooks/useFetch';
 import { ApiUrls } from '@/constants/constants';
-import { ApiPostResponse } from '@/types/generic-types';
+import { ApiPostResponse, AuthActions } from '@/types/generic-types';
 import toast from 'react-hot-toast';
 type RegisterPageProps = {};
 
@@ -25,14 +25,20 @@ const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
 
   const onSubmitHandler: SubmitHandler<UserType> = async (data: UserType) => {
     const response: ApiPostResponse = await sendRequest(
-      ApiUrls.USERS,
+      ApiUrls.AUTHENTICATE,
       'POST',
-      JSON.stringify(data),
+      JSON.stringify({ ...data, action: AuthActions.Register }),
       {
         'Content-Type': 'application/json',
       },
     );
-    if (response.status > 200 && response.status < 300) {
+
+    if (!response) {
+      toast.error('Something went wrong', {
+        position: 'top-right',
+      });
+    }
+    if (response.status >= 200 && response.status < 300) {
       toast.success('Successfully created user', {
         position: 'top-right',
       });

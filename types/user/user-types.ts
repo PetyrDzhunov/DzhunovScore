@@ -5,3 +5,8 @@ export const UserSchema = z.object({
   email: z.string().email({ message: 'Invalid email format' }),
   password: z.string().min(6, { message: 'Password is too short.' }),
 });
+
+export const UserLoginSchema = z.object({
+  email: z.string().email({ message: 'Invalid email format' }),
+  password: z.string().min(6, { message: 'Password is too short.' }),
+});

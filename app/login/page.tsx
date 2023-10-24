@@ -2,29 +2,52 @@
 import Button from '@/components/Button/Button';
 import { z } from 'zod';
 import { ButtonVariantWithStyles } from '@/components/Button/types';
-import { UserSchema } from '@/types/user/user-types';
+import { UserLoginSchema, UserSchema } from '@/types/user/user-types';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { UserType } from '@/types/user/user-validation';
 import axios from 'axios';
+import { ApiUrls } from '@/constants/constants';
+import { ApiPostResponse, AuthActions } from '@/types/generic-types';
+import useFetch from '../hooks/useFetch';
+import toast from 'react-hot-toast';
 type LoginPageProps = {};
 
 const LoginPage: React.FC<LoginPageProps> = ({}) => {
+  const { sendRequest } = useFetch();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<UserType>({
-    resolver: zodResolver(UserSchema),
+  } = useForm<Omit<UserType, 'username'>>({
+    resolver: zodResolver(UserLoginSchema),
   });
 
-  const onSubmitHandler: SubmitHandler<UserType> = async (data: UserType) => {
-    // const response = await axios.post('http://localhost:3000/api/users', data, {
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    // });
-    console.log(data);
+  const onSubmitHandler: SubmitHandler<Omit<UserType, 'username'>> = async (
+    data: Omit<UserType, 'username'>,
+  ) => {
+    console.log('clicked');
+    const response: ApiPostResponse = await sendRequest(
+      ApiUrls.AUTHENTICATE,
+      'POST',
+      JSON.stringify({ ...data, action: AuthActions.Login }),
+      {
+        'Content-Type': 'application/json',
+      },
+    );
+
+    console.log(response);
+
+    if (response.status >= 200 && response.status < 300) {
+      toast.success(response.message, {
+        position: 'top-right',
+      });
+    } else {
+      toast.error(response.message, {
+        position: 'top-right',
+      });
+    }
+
     // maybe save the user to some global local state
     // on creating reroute to future home page
   };
@@ -68,6 +91,7 @@ const LoginPage: React.FC<LoginPageProps> = ({}) => {
 
         <div className='mb-6'>
           <Button
+            type='submit'
             variant={ButtonVariantWithStyles.Primary}
             text='Login'
             className='w-full'
