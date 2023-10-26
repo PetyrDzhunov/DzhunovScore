@@ -11,9 +11,12 @@ import useFetch from '../hooks/useFetch';
 import { ApiUrls } from '@/constants/constants';
 import { ApiPostResponse, AuthActions } from '@/types/generic-types';
 import toast from 'react-hot-toast';
+import { useGlobalContext } from '@/context/global/global-context';
+import { setUserAction } from '@/context/global/user-action';
 type RegisterPageProps = {};
 
 const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
+  const { user, dispatch } = useGlobalContext();
   const { sendRequest, isLoading } = useFetch();
   const {
     register,
@@ -51,6 +54,7 @@ const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
       });
     }
     // maybe save the user to some global local state
+    dispatch(setUserAction(data));
     // on creating reroute to future home page
   };
 
