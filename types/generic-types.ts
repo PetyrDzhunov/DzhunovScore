@@ -5,6 +5,10 @@ export type ApiPostResponse = {
   status: number;
 };
 
+export type AuthenticationApiPostResponse = ApiPostResponse & {
+  data: UserType;
+};
+
 export enum AuthActions {
   Register = 'Register',
   Login = 'Login',

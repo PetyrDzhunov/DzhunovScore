@@ -19,8 +19,12 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-      await User.create({ username, email, password: hashedPassword });
-      return sendResponse('User created successfully!', 201);
+      const newUser = await User.create({
+        username,
+        email,
+        password: hashedPassword,
+      });
+      return sendResponse('User created successfully!', 201, newUser);
     } catch (err) {
       return sendResponse('Failed to create user!', 401);
     }

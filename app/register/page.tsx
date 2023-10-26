@@ -9,7 +9,11 @@ import { UserType } from '@/types/user/user-validation';
 import axios from 'axios';
 import useFetch from '../hooks/useFetch';
 import { ApiUrls, RouteUrls } from '@/constants/constants';
-import { ApiPostResponse, AuthActions } from '@/types/generic-types';
+import {
+  ApiPostResponse,
+  AuthActions,
+  AuthenticationApiPostResponse,
+} from '@/types/generic-types';
 import toast from 'react-hot-toast';
 import { useGlobalContext } from '@/context/global/global-context';
 import { setUserAction } from '@/context/global/user-action';
@@ -31,7 +35,7 @@ const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
   });
 
   const onSubmitHandler: SubmitHandler<UserType> = async (data: UserType) => {
-    const response: ApiPostResponse = await sendRequest(
+    const response: AuthenticationApiPostResponse = await sendRequest(
       ApiUrls.AUTHENTICATE,
       'POST',
       JSON.stringify({ ...data, action: AuthActions.Register }),
@@ -41,7 +45,6 @@ const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
     );
 
     reset();
-
     if (!response) {
       toast.error('Something went wrong', {
         position: 'top-right',
@@ -58,7 +61,7 @@ const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
     }
 
     //save to local state
-    dispatch(setUserAction(data));
+    dispatch(setUserAction(response.data));
     // on creating reroute to future home page
     navigate(RouteUrls.BASE);
   };
