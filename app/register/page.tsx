@@ -8,15 +8,18 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { UserType } from '@/types/user/user-validation';
 import axios from 'axios';
 import useFetch from '../hooks/useFetch';
-import { ApiUrls } from '@/constants/constants';
+import { ApiUrls, RouteUrls } from '@/constants/constants';
 import { ApiPostResponse, AuthActions } from '@/types/generic-types';
 import toast from 'react-hot-toast';
 import { useGlobalContext } from '@/context/global/global-context';
 import { setUserAction } from '@/context/global/user-action';
+import { useRouter } from 'next/navigation';
+import useNavigate from '../hooks/useNavigate';
 type RegisterPageProps = {};
 
 const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
   const { user, dispatch } = useGlobalContext();
+  const navigate = useNavigate();
   const { sendRequest, isLoading } = useFetch();
   const {
     register,
@@ -53,9 +56,11 @@ const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
         position: 'top-right',
       });
     }
-    // maybe save the user to some global local state
+
+    //save to local state
     dispatch(setUserAction(data));
     // on creating reroute to future home page
+    navigate(RouteUrls.BASE);
   };
 
   return (

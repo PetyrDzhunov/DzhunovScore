@@ -1,3 +1,4 @@
+'use client';
 import React, { ReactNode, createContext, useContext, useReducer } from 'react';
 import {
   setUserAction,
