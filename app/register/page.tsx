@@ -19,6 +19,7 @@ const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<UserType>({
     resolver: zodResolver(UserSchema),
   });
@@ -32,6 +33,8 @@ const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
         'Content-Type': 'application/json',
       },
     );
+
+    reset();
 
     if (!response) {
       toast.error('Something went wrong', {

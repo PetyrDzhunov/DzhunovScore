@@ -18,6 +18,7 @@ const LoginPage: React.FC<LoginPageProps> = ({}) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<Omit<UserType, 'username'>>({
     resolver: zodResolver(UserLoginSchema),
@@ -36,8 +37,8 @@ const LoginPage: React.FC<LoginPageProps> = ({}) => {
       },
     );
 
-    console.log(response);
-
+    // clear the form inputs
+    reset();
     if (response.status >= 200 && response.status < 300) {
       toast.success(response.message, {
         position: 'top-right',
@@ -47,7 +48,6 @@ const LoginPage: React.FC<LoginPageProps> = ({}) => {
         position: 'top-right',
       });
     }
-
     // maybe save the user to some global local state
     // on creating reroute to future home page
   };

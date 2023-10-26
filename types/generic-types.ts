@@ -11,5 +11,5 @@ export enum AuthActions {
 }
 
 export type AuthenticationRequestData = UserType & {
-  action: AuthActions; // Replace 'AuthActions' with the actual type for 'action'
+  action: AuthActions;
 };

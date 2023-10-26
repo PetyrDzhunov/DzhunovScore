@@ -30,7 +30,6 @@ export async function POST(request: NextRequest) {
     if (!passwordsMatch) {
       return sendResponse('Invalid data', 400);
     }
-
     return sendResponse(`Welcome ${foundUser.username}`, 200);
   }
 }

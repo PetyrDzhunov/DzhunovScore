@@ -2,16 +2,17 @@
 import { useRouter } from 'next/navigation';
 import Button from '../Button/Button';
 import { ButtonVariantWithStyles } from '../Button/types';
+import { RouteUrls } from '@/constants/constants';
 
 const LoginRegisterButtons: React.FC = () => {
   const router = useRouter();
 
   const onRegisterHandler = (): void => {
-    router.push('/register');
+    router.push(RouteUrls.REGISTER);
   };
 
   const onLoginHandler = (): void => {
-    router.push('/login');
+    router.push(RouteUrls.LOGIN);
   };
 
   return (

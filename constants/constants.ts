@@ -4,3 +4,9 @@ export enum ApiUrls {
   BASE = 'http://localhost:3000/api',
   AUTHENTICATE = `${BASE}/authenticate`,
 }
+
+export enum RouteUrls {
+  BASE = '/',
+  LOGIN = '/login',
+  REGISTER = '/register',
+}
