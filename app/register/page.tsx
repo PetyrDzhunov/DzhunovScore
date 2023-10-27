@@ -6,11 +6,9 @@ import { UserSchema } from '@/types/user/user-types';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { UserType } from '@/types/user/user-validation';
-import axios from 'axios';
 import useFetch from '../hooks/useFetch';
 import { ApiUrls, RouteUrls } from '@/constants/constants';
 import {
-  ApiPostResponse,
   AuthActions,
   AuthenticationApiPostResponse,
 } from '@/types/generic-types';
@@ -22,9 +20,10 @@ import useNavigate from '../hooks/useNavigate';
 type RegisterPageProps = {};
 
 const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
-  const { user, dispatch } = useGlobalContext();
+  const { dispatch } = useGlobalContext();
   const navigate = useNavigate();
-  const { sendRequest, isLoading } = useFetch();
+  const { sendRequest } = useFetch();
+
   const {
     register,
     handleSubmit,
@@ -60,10 +59,8 @@ const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
       });
     }
 
-    //save to local state
     dispatch(setUserAction(response.data));
-    // on creating reroute to future home page
-    navigate(RouteUrls.BASE);
+    navigate(RouteUrls.HOME);
   };
 
   return (

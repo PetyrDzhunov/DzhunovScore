@@ -9,4 +9,5 @@ export enum RouteUrls {
   BASE = '/',
   LOGIN = '/login',
   REGISTER = '/register',
+  HOME = '/home',
 }

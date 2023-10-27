@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang='en'>
       <body className={inter.className}>
         <GlobalContextProvider>
-          <Toaster />
+          <Toaster position='top-right' />
           <Image
             style={{ zIndex: -1 }}
             alt='legends-image'
