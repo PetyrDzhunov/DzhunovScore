@@ -28,13 +28,13 @@ const LoginRegisterButtons: React.FC<LoginRegisterButtonsProps> = ({
       <Button
         text='Register'
         buttonSize='medium'
-        variant={ButtonVariantWithStyles.Primary}
+        variant={ButtonVariantWithStyles.LinearGradientPrimary}
         onClick={onRegisterHandler}
       />
       <Button
         text='Login'
         buttonSize='medium'
-        variant={ButtonVariantWithStyles.Secondary}
+        variant={ButtonVariantWithStyles.LinearGradientSecondary}
         onClick={onLoginHandler}
       />
     </section>
