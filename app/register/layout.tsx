@@ -1,7 +1,7 @@
 import LoginRegisterButtons from '@/components/LoginRegisterButtons/LoginRegisterButtons';
 import Hero from '@/components/Hero/Hero';
 import Image from 'next/image';
-import legendsImage from '../../assets/hero-background.png';
+import legendsImage from '../../assets/hero.jpg';
 
 export default function RegisterLayout({
   children,
