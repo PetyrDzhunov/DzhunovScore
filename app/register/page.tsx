@@ -64,7 +64,7 @@ const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
   };
 
   return (
-    <div className='flex items-center justify-center bg-gray-100 rounded-md'>
+    <div className='flex items-center justify-center bg-gray-100 rounded-md absolute -bottom-4/6 right-2/6'>
       <form
         onSubmit={handleSubmit(onSubmitHandler)}
         className='bg-white p-8 rounded shadow-md max-w-md'

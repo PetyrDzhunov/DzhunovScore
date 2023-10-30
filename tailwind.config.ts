@@ -20,6 +20,10 @@ const config: Config = {
         primaryZomp: '#52AA8A',
         secondaryLight: '#2BD9FE',
       },
+      spacing: {
+        '2/6': '42%',
+        '4/6': '75%',
+      },
     },
   },
   plugins: [],

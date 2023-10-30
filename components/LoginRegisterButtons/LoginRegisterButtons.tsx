@@ -4,7 +4,13 @@ import Button from '../Button/Button';
 import { ButtonVariantWithStyles } from '../Button/types';
 import { RouteUrls } from '@/constants/constants';
 
-const LoginRegisterButtons: React.FC = () => {
+type LoginRegisterButtonsProps = {
+  absolute?: boolean;
+};
+
+const LoginRegisterButtons: React.FC<LoginRegisterButtonsProps> = ({
+  absolute,
+}) => {
   const router = useRouter();
 
   const onRegisterHandler = (): void => {
@@ -15,8 +21,10 @@ const LoginRegisterButtons: React.FC = () => {
     router.push(RouteUrls.LOGIN);
   };
 
+  const classes = `${absolute ? 'absolute right-2/6' : ''} flex m-5 mt-52`;
+
   return (
-    <section className='flex m-5'>
+    <section className={classes}>
       <Button
         text='Register'
         buttonSize='medium'
