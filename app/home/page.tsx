@@ -6,22 +6,41 @@ import { clearUserAction } from '@/context/global/user-action';
 import useNavigate from '../hooks/useNavigate';
 import { RouteUrls } from '@/constants/constants';
 import toast from 'react-hot-toast';
+import useFetch from '../hooks/useFetch';
+import {
+  FootballApiEndpoints,
+  customRapidApiHeaders,
+} from '@/utils/football-api-utils';
+import { useEffect } from 'react';
 
 const HomePage = () => {
   const { dispatch } = useGlobalContext();
   const navigate = useNavigate();
-
+  const { sendRequest } = useFetch();
   const onLogoutHandler = () => {
     dispatch(clearUserAction());
     navigate(RouteUrls.BASE);
-    toast.success('Logout successful. We hope to see you again soon!');
+    toast.success('Logout successfull. We hope to see you again soon!');
   };
+
+  useEffect(() => {
+    const getCountries = async () => {
+      const data = await sendRequest(
+        FootballApiEndpoints.Countries,
+        'GET',
+        null,
+        customRapidApiHeaders
+      );
+      console.log(data);
+    };
+    getCountries();
+  }, []);
 
   return (
     <div>
       Home Page
       <Button
-        text='Logout'
+        text="Logout"
         variant={ButtonVariantWithStyles.Secondary}
         onClick={onLogoutHandler}
       />

@@ -40,7 +40,7 @@ const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
       JSON.stringify({ ...data, action: AuthActions.Register }),
       {
         'Content-Type': 'application/json',
-      },
+      }
     );
 
     reset();
@@ -64,62 +64,62 @@ const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
   };
 
   return (
-    <div className='flex items-center justify-center bg-gray-100 rounded-md absolute -bottom-4/6 right-2/6'>
+    <div className="flex items-center justify-center bg-gray-100 rounded-md absolute 2xl:-bottom-4/6 lg:-bottom-full right-2/6">
       <form
         onSubmit={handleSubmit(onSubmitHandler)}
-        className='bg-white p-8 rounded shadow-md max-w-md'
+        className="bg-white p-8 rounded shadow-md max-w-md"
       >
-        <div className='mb-4'>
-          <label className='block text-gray-700 text-sm font-bold mb-2'>
-            Username:
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Username
           </label>
           <input
             {...register('username')}
-            className='text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500'
+            className="text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
           />
           {errors?.username?.message && (
-            <p className='text-red-500 text-sm mt-1 font-semibold'>
+            <p className="text-red-500 text-sm mt-1 font-semibold">
               {errors?.username?.message as string}
             </p>
           )}
         </div>
 
-        <div className='mb-4'>
-          <label className='block text-gray-700 text-sm font-bold mb-2'>
-            Email:
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Email
           </label>
           <input
             {...register('email')}
-            className='text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500'
+            className="text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
           />
           {errors?.email?.message && (
-            <p className='text-red-500 text-sm mt-1 font-semibold'>
+            <p className="text-red-500 text-sm mt-1 font-semibold">
               {errors?.email?.message as string}
             </p>
           )}
         </div>
 
-        <div className='mb-4'>
-          <label className='block text-gray-700 text-sm font-bold mb-2'>
-            Password:
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Password
           </label>
           <input
-            type='password'
+            type="password"
             {...register('password')}
-            className='text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500'
+            className="text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
           />
           {errors?.password?.message && (
-            <p className='text-red-500 text-sm mt-1 font-semibold'>
+            <p className="text-red-500 text-sm mt-1 font-semibold">
               {errors?.password?.message as string}
             </p>
           )}
         </div>
 
-        <div className='mb-6'>
+        <div className="mb-6">
           <Button
             variant={ButtonVariantWithStyles.Primary}
-            text='Register'
-            className='w-full'
+            text="Register"
+            className="w-full"
           />
         </div>
       </form>

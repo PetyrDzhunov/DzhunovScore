@@ -21,19 +21,21 @@ const LoginRegisterButtons: React.FC<LoginRegisterButtonsProps> = ({
     router.push(RouteUrls.LOGIN);
   };
 
-  const classes = `${absolute ? 'absolute right-2/6' : ''} flex m-5 mt-52`;
+  const classes = `${
+    absolute ? 'absolute right-2/6' : ''
+  } flex m-5 xl:mt-8 2xl:mt-44`;
 
   return (
     <section className={classes}>
       <Button
-        text='Register'
-        buttonSize='medium'
+        text="Register"
+        buttonSize="medium"
         variant={ButtonVariantWithStyles.LinearGradientPrimary}
         onClick={onRegisterHandler}
       />
       <Button
-        text='Login'
-        buttonSize='medium'
+        text="Login"
+        buttonSize="medium"
         variant={ButtonVariantWithStyles.LinearGradientSecondary}
         onClick={onLoginHandler}
       />

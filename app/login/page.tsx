@@ -32,7 +32,7 @@ const LoginPage: React.FC<LoginPageProps> = ({}) => {
   });
 
   const onSubmitHandler: SubmitHandler<Omit<UserType, 'username'>> = async (
-    data: Omit<UserType, 'username'>,
+    data: Omit<UserType, 'username'>
   ) => {
     const response: AuthenticationApiPostResponse = await sendRequest(
       ApiUrls.AUTHENTICATE,
@@ -40,7 +40,7 @@ const LoginPage: React.FC<LoginPageProps> = ({}) => {
       JSON.stringify({ ...data, action: AuthActions.Login }),
       {
         'Content-Type': 'application/json',
-      },
+      }
     );
 
     reset();
@@ -58,48 +58,48 @@ const LoginPage: React.FC<LoginPageProps> = ({}) => {
   };
 
   return (
-    <div className='flex items-center justify-center bg-gray-100 rounded-md absolute -bottom-4/6 right-2/6'>
+    <div className="flex items-center justify-center bg-gray-100 rounded-md absolute -bottom-4/6 right-2/6 xl:-bottom-5/6">
       <form
         onSubmit={handleSubmit(onSubmitHandler)}
-        className='bg-white p-8 rounded shadow-md max-w-md'
+        className="bg-white p-8 rounded shadow-md max-w-md"
       >
-        <div className='mb-4'>
-          <label className='block text-gray-700 text-sm font-bold mb-2'>
-            Email:
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Email
           </label>
           <input
             {...register('email')}
-            className='text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500'
+            className="text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
           />
           {errors?.email?.message && (
-            <p className='text-red-500 text-sm mt-1 font-semibold'>
+            <p className="text-red-500 text-sm mt-1 font-semibold">
               {errors?.email?.message as string}
             </p>
           )}
         </div>
 
-        <div className='mb-4'>
-          <label className='block text-gray-700 text-sm font-bold mb-2'>
-            Password:
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Password
           </label>
           <input
-            type='password'
+            type="password"
             {...register('password')}
-            className='text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500'
+            className="text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
           />
           {errors?.password?.message && (
-            <p className='text-red-500 text-sm mt-1 font-semibold'>
+            <p className="text-red-500 text-sm mt-1 font-semibold">
               {errors?.password?.message as string}
             </p>
           )}
         </div>
 
-        <div className='mb-6'>
+        <div className="mb-6">
           <Button
-            type='submit'
+            type="submit"
             variant={ButtonVariantWithStyles.Primary}
-            text='Login'
-            className='w-full'
+            text="Login"
+            className="w-full"
           />
         </div>
       </form>

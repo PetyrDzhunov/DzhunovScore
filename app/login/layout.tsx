@@ -11,10 +11,10 @@ export default function RegisterLayout({
   return (
     <div>
       <Hero />
-      <div className='flex'>
+      <div className="flex">
         <Image
-          style={{ position: 'relative', zIndex: -1 }}
-          alt='legends-image'
+          className="h-full w-full object-cover"
+          alt="legends-image"
           src={legendsImage}
         ></Image>
         <LoginRegisterButtons absolute />
