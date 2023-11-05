@@ -3,9 +3,5 @@ export default function HomeLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <div className='flex min-h-screen flex-col items-center p-24'>
-      {children}
-    </div>
-  );
+  return <div className='flex min-h-screen'>{children}</div>;
 }
