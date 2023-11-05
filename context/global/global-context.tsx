@@ -5,27 +5,37 @@ import {
   clearUserAction,
   SET_USER,
   CLEAR_USER,
+  SET_COUNTRIES,
+  setCounriesAction,
 } from './user-action';
 import { UserType } from '@/types/user/user-validation';
 import { INITIAL_CONTEXT_DATA } from '@/constants/globals';
+import { Country } from '@/types/api/api-types';
 
-export type GlobalContextType = {
+// Define the context state type
+type ContextState = {
   user: UserType | null;
-  dispatch: React.Dispatch<Action>;
+  countries: Country[];
 };
 
-type Action = ReturnType<typeof setUserAction | typeof clearUserAction>;
-const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
+// Define the action types
+type Action =
+  | ReturnType<typeof setUserAction>
+  | ReturnType<typeof clearUserAction>
+  | ReturnType<typeof setCounriesAction>;
 
-const reducer = (
-  state: GlobalContextType,
-  action: Action,
-): GlobalContextType => {
+const GlobalContext = createContext<
+  { state: ContextState; dispatch: React.Dispatch<Action> } | undefined
+>(undefined);
+
+const reducer = (state: ContextState, action: Action): ContextState => {
   switch (action.type) {
     case SET_USER:
       return { ...state, user: action.payload };
     case CLEAR_USER:
       return { ...state, user: null };
+    case SET_COUNTRIES:
+      return { ...state, countries: action.payload };
     default:
       return state;
   }
@@ -40,13 +50,8 @@ const GlobalContextProvider: React.FC<GlobalContextProviderProps> = ({
 }) => {
   const [state, dispatch] = useReducer(reducer, INITIAL_CONTEXT_DATA);
 
-  const contextValue: GlobalContextType = {
-    user: state.user,
-    dispatch,
-  };
-
   return (
-    <GlobalContext.Provider value={contextValue}>
+    <GlobalContext.Provider value={{ state, dispatch }}>
       {children}
     </GlobalContext.Provider>
   );

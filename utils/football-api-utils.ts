@@ -1,3 +1,6 @@
+import { Country } from '@/types/api/api-types';
+import { sendRequest } from './api-utils';
+
 export const customRapidApiHeaders: {
   'x-rapidapi-key'?: string;
   'x-rapidapi-host'?: string;
@@ -12,3 +15,13 @@ export const BASE_FOOTBALL_API_URL =
 export enum FootballApiEndpoints {
   Countries = `${BASE_FOOTBALL_API_URL}/countries`,
 }
+
+export const getCountries = async () => {
+  const res = await sendRequest(
+    FootballApiEndpoints.Countries,
+    'GET',
+    null,
+    customRapidApiHeaders,
+  );
+  return res.response as Country[];
+};
