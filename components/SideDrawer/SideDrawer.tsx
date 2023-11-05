@@ -13,7 +13,7 @@ const SideDrawer: React.FC<SideDrawerProps> = ({ countries }) => {
   const countriesWithImages = countries.filter((country) => country.flag);
 
   return (
-    <div className='w-60 bg-white p-2'>
+    <div className='w-60 bg-secondary bg-opacity-20	 p-2'>
       <ul className=' overflow-x-auto'>
         {countriesWithImages.map((country: Country, index) => (
           <SingleCountry key={index} country={country} />

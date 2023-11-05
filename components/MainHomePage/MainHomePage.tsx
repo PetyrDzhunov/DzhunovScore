@@ -17,7 +17,7 @@ const MainHomePage: React.FC<MainHomePageProps> = ({ countries }) => {
   }, []);
 
   return (
-    <div className='bg-opacity-50 bg-black min-h-screen'>
+    <div className='bg-opacity-20 bg-primary min-h-screen'>
       <SideDrawer countries={countries} />
     </div>
   );

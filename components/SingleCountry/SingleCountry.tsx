@@ -8,7 +8,7 @@ type SingleCountryProps = {
 
 const SingleCountry: React.FC<SingleCountryProps> = ({ country }) => {
   return (
-    <div className='mb-4 flex flex-row cursor-pointer hover:bg-gray-200 hover:shadow-md p-1 w-full'>
+    <div className='mb-4 flex flex-row cursor-pointer hover:bg-secondary hover:shadow-md p-1 w-full'>
       <Image
         src={country?.flag}
         alt={country.name}

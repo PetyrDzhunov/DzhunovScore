@@ -6,9 +6,9 @@ const HomePage = async () => {
   const countries = await getCountries();
 
   return (
-    <main>
-      <MainHomePage countries={countries} />
+    <main className='w-full'>
       <Navigation />
+      <MainHomePage countries={countries} />
     </main>
   );
 };

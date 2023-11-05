@@ -14,13 +14,14 @@ const Navigation = () => {
   const onLogoutHandler = () => {
     dispatch(clearUserAction());
     navigate(RouteUrls.BASE);
-    toast.success('Logout successfull. We hope to see you again soon!');
+    toast.success('Logout successful. We hope to see you again soon!');
   };
 
   return (
-    <div>
+    <div className='py-2 px-4 shadow-md flex justify-between bg-primary bg-opacity-70'>
       <Button
         text='Logout'
+        className='ml-auto'
         variant={ButtonVariantWithStyles.Secondary}
         onClick={onLogoutHandler}
       />
