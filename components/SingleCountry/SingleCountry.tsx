@@ -4,11 +4,16 @@ import { Country } from '@/types/api/api-types';
 
 type SingleCountryProps = {
   country: Country;
+  isLast: boolean;
 };
 
-const SingleCountry: React.FC<SingleCountryProps> = ({ country }) => {
+const SingleCountry: React.FC<SingleCountryProps> = ({ country, isLast }) => {
+  const marginClass = isLast ? '' : 'mb-4';
+
   return (
-    <div className='mb-4 flex flex-row cursor-pointer hover:bg-secondary hover:shadow-md p-1 w-full'>
+    <div
+      className={`flex flex-row cursor-pointer hover:bg-secondary hover:shadow-md p-1 w-full ${marginClass}`}
+    >
       <Image
         src={country?.flag}
         alt={country.name}

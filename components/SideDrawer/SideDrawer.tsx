@@ -7,18 +7,21 @@ type SideDrawerProps = {
 };
 
 const SideDrawer: React.FC<SideDrawerProps> = ({ countries }) => {
-  const { state } = useGlobalContext();
-
-  // Filter out countries without an image (flag)
   const countriesWithImages = countries.filter((country) => country.flag);
 
   return (
-    <div className='w-60 bg-secondary bg-opacity-20	 p-2'>
-      <ul className=' overflow-x-auto'>
-        {countriesWithImages.map((country: Country, index) => (
-          <SingleCountry key={index} country={country} />
-        ))}
-      </ul>
+    <div className='w-60 bg-secondary bg-opacity-20 p'>
+      <div className='h-[calc(100vh-4em)] overflow-y-auto'>
+        <ul className=''>
+          {countriesWithImages.map((country: Country, index) => (
+            <SingleCountry
+              key={index}
+              country={country}
+              isLast={index === countriesWithImages.length - 1}
+            />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
