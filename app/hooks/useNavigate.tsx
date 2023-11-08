@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 const useNavigate = () => {
   const router = useRouter();
 
-  const navigate = (route: RouteUrls) => {
+  const navigate = (route: RouteUrls | string) => {
     router.push(route);
   };
 

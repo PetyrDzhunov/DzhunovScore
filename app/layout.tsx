@@ -21,7 +21,6 @@ export default function RootLayout({
       <body className={inter.className}>
         <GlobalContextProvider>
           <Toaster position='top-right' />
-
           {children}
         </GlobalContextProvider>
       </body>

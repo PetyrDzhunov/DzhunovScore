@@ -1,4 +1,3 @@
-import { useGlobalContext } from '@/context/global/global-context';
 import { Country } from '@/types/api/api-types';
 import SingleCountry from '../SingleCountry/SingleCountry';
 
@@ -11,7 +10,7 @@ const SideDrawer: React.FC<SideDrawerProps> = ({ countries }) => {
 
   return (
     <div className='w-60 bg-secondary bg-opacity-20 p'>
-      <div className='h-[calc(100vh-4em)] overflow-y-auto'>
+      <div className='h-[calc(100vh-4em)] overflow-y-auto scrollbar-thin scrollbar-thumb-rounded-full scrollbar-thumb-primaryLight scrollbar-track-secondaryLight'>
         <ul className=''>
           {countriesWithImages.map((country: Country, index) => (
             <SingleCountry

@@ -10,4 +10,5 @@ export enum RouteUrls {
   LOGIN = '/login',
   REGISTER = '/register',
   HOME = '/home',
+  COUNTRIES = '/countries',
 }
