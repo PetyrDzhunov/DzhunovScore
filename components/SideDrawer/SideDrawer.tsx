@@ -10,7 +10,7 @@ const SideDrawer: React.FC<SideDrawerProps> = ({ countries }) => {
 
   return (
     <div className='w-60 bg-secondary bg-opacity-20 p'>
-      <div className='h-[calc(100vh-4em)] overflow-y-auto scrollbar-thin scrollbar-thumb-rounded-full scrollbar-thumb-primaryLight scrollbar-track-secondaryLight'>
+      <div className='h-[calc(100vh-4em)] overflow-y-auto scrollbar-thin scrollbar-thumb-rounded-full scrollbar-thumb-primaryLight scrollbar-track-secondaryLight fixed'>
         <ul className=''>
           {countriesWithImages.map((country: Country, index) => (
             <SingleCountry

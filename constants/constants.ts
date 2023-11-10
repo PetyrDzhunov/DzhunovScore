@@ -12,3 +12,5 @@ export enum RouteUrls {
   HOME = '/home',
   COUNTRIES = '/countries',
 }
+
+export const LATEST_SEASON_YEAR: number = new Date().getFullYear();
