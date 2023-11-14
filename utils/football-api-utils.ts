@@ -1,7 +1,9 @@
 import {
   Country,
   LeagueAPIResponse,
+  LeagueById,
   SingleLeagueByIdAPIResponse,
+  SingleTeamByIdAPIResponse,
 } from '@/types/api/api-types';
 import { sendRequest } from './api-utils';
 import { LATEST_SEASON_YEAR } from '@/constants/constants';
@@ -21,6 +23,7 @@ export enum FootballApiEndpoints {
   Countries = `${BASE_FOOTBALL_API_URL}/countries`,
   Leagues = `${BASE_FOOTBALL_API_URL}/leagues`,
   Standings = `${BASE_FOOTBALL_API_URL}/standings`,
+  TeamById = `${BASE_FOOTBALL_API_URL}/teams`,
 }
 
 export const getCountries = async () => {
@@ -43,7 +46,9 @@ export const getLeague = async (countryName: string) => {
   return res.response as LeagueAPIResponse[];
 };
 
-export const getStandings = async (leagueIds: number[]) => {
+export const getStandings = async (
+  leagueIds: number[],
+): Promise<LeagueById[]> => {
   // Create an array of promises for each league ID
   const standingsPromises = leagueIds.map(async (leagueId) => {
     const res = await sendRequest(
@@ -64,4 +69,17 @@ export const getStandings = async (leagueIds: number[]) => {
     });
 
   return currentLeaguesForThisCountry;
+};
+
+export const getTeamInformationByName = async (
+  teamName: string,
+): Promise<SingleTeamByIdAPIResponse> => {
+  const res = await sendRequest(
+    `${FootballApiEndpoints.TeamById}?name=${teamName}`,
+    'GET',
+    null,
+    customRapidApiHeaders,
+  );
+
+  return res.response[0] as SingleTeamByIdAPIResponse;
 };

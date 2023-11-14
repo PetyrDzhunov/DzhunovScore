@@ -13,7 +13,8 @@ const SingleTeam: React.FC<SingleTeamProps> = ({ standing }) => {
   const navigate = useNavigate();
 
   const handleTeamClick = () => {
-    navigate(`${RouteUrls.TEAMS}/${standing.team.name}`);
+    const teamName = standing.team.name;
+    navigate(`${RouteUrls.TEAMS}/${teamName}`);
   };
 
   return (

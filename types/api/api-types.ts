@@ -94,3 +94,28 @@ export type LeagueById = {
   season: number;
   standings: StandingsItem[][];
 };
+
+export type TeamVenue = {
+  id: number;
+  name: string;
+  address: string | null;
+  city: string;
+  capacity: number;
+  surface: string;
+  image: string;
+};
+
+export type TeamInformation = {
+  id: number;
+  name: string;
+  code: string;
+  country: string;
+  founded: number;
+  national: boolean;
+  logo: string;
+};
+
+export type SingleTeamByIdAPIResponse = {
+  team: TeamInformation;
+  venue: TeamVenue;
+};
