@@ -5,9 +5,8 @@ const HomePage = async () => {
   const countries = await getCountries();
 
   return (
-    <div className='flex'>
+    <div className='flex bg-gray-500'>
       <MainHomePage countries={countries} />
-      <div>Hello from Home Page</div>;
     </div>
   );
 };

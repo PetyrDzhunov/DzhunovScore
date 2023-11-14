@@ -11,6 +11,7 @@ export enum RouteUrls {
   REGISTER = '/register',
   HOME = '/home',
   COUNTRIES = '/countries',
+  TEAMS = '/teams',
 }
 
 export const LATEST_SEASON_YEAR: number = new Date().getFullYear();

@@ -18,7 +18,7 @@ const Navigation = () => {
   };
 
   return (
-    <div className='py-2 px-4 shadow-md flex justify-between bg-primary bg-opacity-70'>
+    <div className='py-2 px-4 shadow-md flex justify-between bg-primary fixed top-0 w-full z-10'>
       <Button
         text='Logout'
         className='ml-auto'

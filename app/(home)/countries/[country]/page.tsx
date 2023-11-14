@@ -21,7 +21,6 @@ const CountryPage: React.FC<CountryPageProps> = async ({
   const leagueIds = currentCountryLeagues.map((item) => item.league.id);
   const currentSeasonStandingsForAllLeaguesForCurrentCountry =
     await getStandings(leagueIds);
-  console.log(currentSeasonStandingsForAllLeaguesForCurrentCountry);
   const countries = await getCountries();
   return (
     <div className='flex bg-gray-500'>

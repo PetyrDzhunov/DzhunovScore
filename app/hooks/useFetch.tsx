@@ -12,7 +12,7 @@ interface UseFetchResponse<Data> {
   isLoading: boolean;
 }
 
-const useFetch = <Data = any>(): UseFetchResponse<Data> => {
+const useFetch = <Data = any,>(): UseFetchResponse<Data> => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -26,7 +26,6 @@ const useFetch = <Data = any>(): UseFetchResponse<Data> => {
       try {
         setIsLoading(true);
         const response = await fetch(url, { method, body, headers });
-        console.log(response);
         const responseData = await response.json();
         if (!response.ok) {
           return responseData;

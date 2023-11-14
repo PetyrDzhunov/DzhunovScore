@@ -1,5 +1,6 @@
 import { Country } from '@/types/api/api-types';
 import SingleCountry from '../SingleCountry/SingleCountry';
+import { useState } from 'react';
 
 type SideDrawerProps = {
   countries: Country[];
@@ -7,9 +8,15 @@ type SideDrawerProps = {
 
 const SideDrawer: React.FC<SideDrawerProps> = ({ countries }) => {
   const countriesWithImages = countries.filter((country) => country.flag);
+  const [activeCountry, setActiveCountry] = useState<string | null>(null);
 
+  const handleCountryClick = (countryName: string) => {
+    setActiveCountry(countryName);
+  };
+
+  console.log(activeCountry, 'active');
   return (
-    <div className='w-60 bg-secondary bg-opacity-20 p'>
+    <div className='w-60 bg-secondary bg-opacity-20 mt-16'>
       <div className='h-[calc(100vh-4em)] overflow-y-auto scrollbar-thin scrollbar-thumb-rounded-full scrollbar-thumb-primaryLight scrollbar-track-secondaryLight fixed'>
         <ul className=''>
           {countriesWithImages.map((country: Country, index) => (
