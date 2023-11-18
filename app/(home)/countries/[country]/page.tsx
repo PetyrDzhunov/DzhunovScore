@@ -23,7 +23,7 @@ const CountryPage: React.FC<CountryPageProps> = async ({
     await getStandings(leagueIds);
   const countries = await getCountries();
   return (
-    <div className='flex bg-gray-500'>
+    <div className='flex bg-gray-500 min-h-screen'>
       <MainHomePage countries={countries} />
       <CountryTable
         footballData={currentSeasonStandingsForAllLeaguesForCurrentCountry}

@@ -7,7 +7,7 @@ export default async function HomeLayout({
 }) {
   return (
     <div>
-      <main className='w-full'>
+      <main className='w-full min-h-full'>
         <Navigation />
         {children}
       </main>
